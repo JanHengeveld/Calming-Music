@@ -221,9 +221,10 @@ tempogramstrueforjoris <- jorisvoornexample |>
   labs(x = "Time (s)", title = "Polydub, Joris Voorn", y = "Tempo (BPM)") +
   theme_classic()
 grid.arrange(tempogramsfalseforweightless, tempogramstrueforweightless, ncol = 2)
+
 grid.arrange(tempogramsfalseforpureshores, tempogramstrueforpureshores, ncol = 2)
 
-  grid.arrange(tempogramsfalseforjoris, tempogramstrueforjoris, ncol = 1)
+  grid.arrange(tempogramsfalseforjoris, tempogramstrueforjoris, ncol = 2)
 ```
 
 ------------------------------------------------------------------------
