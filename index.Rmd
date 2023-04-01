@@ -135,27 +135,19 @@ humansscience |> mutate(category = "Humansscience")
 ```
 ### Tempograms and novelty - Homework week 11; a boxplot on tempo for my 4 playlists
 
-```{r, 1 single variable compared; tempo  sjwsjs}
-
-
-combine4lists |>
+```{r}
+plot1 <- combine4lists |>
  ggplot(aes(x = category, y = tempo)) +
   geom_boxplot()
-
-combine5lists <-
-bind_rows(
-humans |> mutate(category = "Humans"),
-dogs |> mutate(category = "Dogs"),
-dogsscience |> mutate(category = "Dogsscience"),
-humansscience |> mutate(category = "Humansscience")
-)
-
-combine5lists |>
-  ggplot(aes(x = tempo)) +
-  geom_histogram(binwidth = 2) +
-  facet_wrap(~category)
+grid.arrange(plot1)
+```
 
 
+```{r, 1 single variable compared; tempo plots and gram  sjwsjs}
+
+plot1 <- combine4lists |>
+ ggplot(aes(x = category, y = tempo)) +
+  geom_boxplot()
 
 singlehumanscience <- get_tidy_audio_analysis("6kkwzB6hXLIONkEk9JciA6")
 
@@ -179,7 +171,6 @@ tempogramstrueforweightless <- singlehumanscience |>
   theme_classic()
   
 
-
 pureshores <- get_tidy_audio_analysis("5uHnDHx5J48FdT6FjwA7Z8")
 
 tempogramsfalseforpureshores <- pureshores |>
@@ -202,7 +193,6 @@ tempogramstrueforpureshores <- pureshores |>
   theme_classic()
   
 
-
 jorisvoornexample <- get_tidy_audio_analysis("7fqAVya5281BFkUokiXAAB")
 
 tempogramsfalseforjoris <- jorisvoornexample |>
@@ -220,11 +210,9 @@ tempogramstrueforjoris <- jorisvoornexample |>
   scale_fill_viridis_c(guide = "none") +
   labs(x = "Time (s)", title = "Polydub, Joris Voorn", y = "Tempo (BPM)") +
   theme_classic()
-grid.arrange(tempogramsfalseforweightless, tempogramstrueforweightless, ncol = 2)
+grid.arrange(plot1, ncol = 1)
+grid.arrange(tempogramsfalseforweightless, tempogramstrueforweightless, tempogramsfalseforpureshores, tempogramstrueforpureshores, tempogramsfalseforjoris, tempogramstrueforjoris, ncol = 2)
 
-grid.arrange(tempogramsfalseforpureshores, tempogramstrueforpureshores, ncol = 2)
-
-  grid.arrange(tempogramsfalseforjoris, tempogramstrueforjoris, ncol = 2)
 ```
 
 ------------------------------------------------------------------------
